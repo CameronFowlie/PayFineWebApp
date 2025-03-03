@@ -1,8 +1,38 @@
+/* Import the GOV.UK Design System */
+@import url("https://assets.publishing.service.gov.uk/government-frontend/govuk-frontend.min.css");
+
+/* Ensure the correct font family is applied */
+body {
+    font-family: "GDS Transport", Arial, sans-serif;
+}
+
 /* Navbar Styling */
 .navbar {
     background-color: black !important;
+    padding: 10px 20px;
 }
 
 .navbar-nav .nav-link, .navbar-brand {
+    font-size: 19px;  /* GOV.UK default body text size */
+    font-family: "GDS Transport", Arial, sans-serif;
     color: white !important;
+}
+
+/* Headings using GOV.UK Design System */
+h1 {
+    font-size: 48px; /* govuk-heading-xl */
+    line-height: 50px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px; /* govuk-heading-m */
+    line-height: 30px;
+    font-weight: bold;
+}
+
+/* General text */
+p {
+    font-size: 19px; /* govuk-body */
+    line-height: 25px;
 }
