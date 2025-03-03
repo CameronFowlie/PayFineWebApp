@@ -73,7 +73,7 @@ public class Fine
 
     public void setPaymentDeadline(LocalDate paymentDeadline)
     {
-        paymentDeadline = paymentDeadline;
+        this.paymentDeadline = paymentDeadline;
     }
 
     public String getPostcode()
