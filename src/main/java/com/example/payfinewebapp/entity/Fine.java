@@ -16,7 +16,7 @@ public class Fine
     @Column(unique = true)
     private String referenceCode;
 
-    private LocalDate PaymentDeadline;
+    private LocalDate paymentDeadline;
 
     private String postcode;
 
@@ -31,7 +31,7 @@ public class Fine
     {
         this.amountDue = amountDue;
         this.referenceCode = referenceCode;
-        PaymentDeadline = paymentDeadline;
+        this.paymentDeadline = paymentDeadline;
         this.postcode = postcode;
         this.houseNo = houseNo;
     }
@@ -68,12 +68,12 @@ public class Fine
 
     public LocalDate getPaymentDeadline()
     {
-        return PaymentDeadline;
+        return paymentDeadline;
     }
 
     public void setPaymentDeadline(LocalDate paymentDeadline)
     {
-        PaymentDeadline = paymentDeadline;
+        paymentDeadline = paymentDeadline;
     }
 
     public String getPostcode()
