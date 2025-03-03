@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav class="navbar navbar-expand-lg" th:fragment="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img th:src="@{/ukgovlogo.png}" alt="UK Government Logo" width="150" height="75" class="d-inline-block align-top">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">GOV.UK</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">HMCTS Court Fines</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

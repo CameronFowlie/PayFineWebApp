@@ -1,0 +1,8 @@
+/* Navbar Styling */
+.navbar {
+    background-color: black !important;
+}
+
+.navbar-nav .nav-link, .navbar-brand {
+    color: white !important;
+}
