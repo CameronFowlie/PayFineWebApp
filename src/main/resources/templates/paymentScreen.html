@@ -25,16 +25,16 @@
 <!--Heading and body-->
 
 <div class="container mt-5 govuk-!-text-colour">
-    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Amount you owe'">Amount you owe:</h1>
+    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Amount you owe:'">Amount you owe</h1>
 
     <p class="govuk-body" th:text="${message} ?: 'You can pay a court fine or charge online or by phone.'">
         You can pay a court fine or charge online or by phone.</p>
 
 
     <!-- Create Student Form -->
-    <form th:action="@{/paycourtfine}" th:object="${paymentdto}" method="post" class="mb-4">
+    <form th:action="@{/paycourtfine/paymentscreen}" th:object="${paymentdto}" method="post" class="mb-4">
         <div class="form-group">
-            <label for="amounttopay">Amount to Pay:</label>
+            <label for="amounttopay">Amount to Pay (£'s):</label>
             <input type="number" class="form-control" th:field="*{amountToPay}" required>
         </div>
         <div class="form-group">
@@ -59,104 +59,24 @@
                      viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                           d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
-                </svg></button>
+                </svg>
+            </button>
         </div>
 
-        <form class="credit-card">
-            <div class="form-header">
-                <h4 class="title">Credit card detail</h4>
-            </div>
 
-            <div class="form-body">
-                <!-- Card Number -->
-                <input type="text" class="card-number" placeholder="Card Number">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                crossorigin="anonymous"></script>
 
-                <!-- Date Field -->
-                <div class="date-field">
-                    <div class="month">
-                        <select name="Month">
-                            <option value="january">January</option>
-                            <option value="february">February</option>
-                            <option value="march">March</option>
-                            <option value="april">April</option>
-                            <option value="may">May</option>
-                            <option value="june">June</option>
-                            <option value="july">July</option>
-                            <option value="august">August</option>
-                            <option value="september">September</option>
-                            <option value="october">October</option>
-                            <option value="november">November</option>
-                            <option value="december">December</option>
-                        </select>
-                    </div>
-                    <div class="year">
-                        <select name="Year">
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Card Verification Field -->
-                <div class="card-verification">
-                    <div class="cvv-input">
-                        <input type="text" placeholder="CVV">
-                    </div>
-                    <div class="cvv-details">
-                        <p>3 or 4 digits usually found <br> on the signature strip</p>
-                    </div>
-                </div>
-
-                <!-- Buttons -->
-                <button type="submit" class="proceed-btn">Proceed</button>
-                <button type="button" class="paypal-btn">Pay With PayPal</button>
-            </div>
-<!--        </form>-->
-
-<!--        -->
-<!--    </form>-->
-
-    <!--  &lt;!&ndash;  Button&ndash;&gt;-->
-    <!--  <a th:href="${payOnlineUrl} ?: '#'" class="btn btn-success btn-lg d-inline-flex align-items-center">-->
-    <!--    Start now-->
-    <!--    <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
-    <!--         viewBox="0 0 16 16">-->
-    <!--      <path fill-rule="evenodd"-->
-    <!--            d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>-->
-    <!--    </svg>-->
-    <!--  </a>-->
-
-    <!--      <a th:href="${payOnlineUrl} ?: '#'" role="button" draggable="false" class="govuk-button govuk-button&#45;&#45;start" data-module="govuk-button">-->
-    <!--          Start now-->
-    <!--          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">-->
-    <!--              <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />-->
-    <!--          </svg>-->
-    <!--      </a>-->
-
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-<script>
-    document.getElementById("expirydate").addEventListener("input", function(event) {
-        let input = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-        if (input.length > 2) {
-            input = input.slice(0, 2) + '/' + input.slice(2, 4);
-        }
-        event.target.value = input;
-    });
-</script>
+        <script>
+            document.getElementById("expirydate").addEventListener("input", function (event) {
+                let input = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+                if (input.length > 2) {
+                    input = input.slice(0, 2) + '/' + input.slice(2, 4);
+                }
+                event.target.value = input;
+            });
+        </script>
 
 
 </body>
