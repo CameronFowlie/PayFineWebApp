@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:text="${title}">Enter details</title>
+    <title th:text="${title}">Payment</title>
 
     <!-- GOV.UK Design System CSS -->
     <link rel="stylesheet" href="https://assets.publishing.service.gov.uk/government-frontend/govuk-frontend.min.css">
@@ -27,8 +27,12 @@
 <div class="container mt-5 govuk-!-text-colour">
     <h1 class="govuk-heading-xl" th:text="${header} ?: 'Amount you owe:'">Amount you owe</h1>
 
-    <p class="govuk-body" th:text="${message} ?: 'You can pay a court fine or charge online or by phone.'">
-        You can pay a court fine or charge online or by phone.</p>
+<!--    <p class="govuk-body" th:text="${fine.amountDue}">-->
+<!--        You can pay a court fine or charge online or by phone.</p>-->
+
+
+
+    <p class="govuk-body"><strong>£</strong> <span th:text="${fine.amountDue}">Amount left</span></p>
 
 
     <!-- Create Student Form -->
