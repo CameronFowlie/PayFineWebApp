@@ -43,20 +43,26 @@
     </div>
     <div class="form-group">
       <label for="housenumber">House Number:</label>
-      <input type="number" class="form-control" th:field="*{houseNo}" required>
+      <input type="text" class="form-control" th:field="*{houseNo}" required>
     </div>
-    <button type="continue" class="btn btn-primary mt-3">Continue</button>
+    <button type="continue" class="btn btn-success btn-lg d-inline-flex mt-4">
+      Continue
+      <svg class="ms-2 mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+           viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+              d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
+      </svg></button>
   </form>
 
-  <!--  Button-->
-  <a th:href="${payOnlineUrl} ?: '#'" class="btn btn-success btn-lg d-inline-flex align-items-center">
-    Start now
-    <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-         viewBox="0 0 16 16">
-      <path fill-rule="evenodd"
-            d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
-    </svg>
-  </a>
+<!--  &lt;!&ndash;  Button&ndash;&gt;-->
+<!--  <a th:href="${payOnlineUrl} ?: '#'" class="btn btn-success btn-lg d-inline-flex align-items-center">-->
+<!--    Start now-->
+<!--    <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+<!--         viewBox="0 0 16 16">-->
+<!--      <path fill-rule="evenodd"-->
+<!--            d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>-->
+<!--    </svg>-->
+<!--  </a>-->
 
 <!--      <a th:href="${payOnlineUrl} ?: '#'" role="button" draggable="false" class="govuk-button govuk-button&#45;&#45;start" data-module="govuk-button">-->
 <!--          Start now-->
