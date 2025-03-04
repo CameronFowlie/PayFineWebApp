@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("fines")
+@RequestMapping("paycourtfine")
 public class FineWeb
 {
     @Autowired
@@ -21,15 +21,21 @@ public class FineWeb
         return "index";
     }
 
-    @GetMapping("find")
-    public String ViewFine()
+    @GetMapping("payonlineenterdetails")
+    public String FindFine()
     {
         return "enterDetails";
     }
 
-    @GetMapping("view/{id}")
-    public String PayFine(@PathVariable Long id)
+    @GetMapping("paymentscreen")
+    public String PayFine()
     {
-        return "pay-fine";
+        return "paymentScreen";
+    }
+
+    @GetMapping("paymentconfirmationscreen")
+    public String ConfirmFine()
+    {
+        return "paymentConfirmationScreen";
     }
 }
