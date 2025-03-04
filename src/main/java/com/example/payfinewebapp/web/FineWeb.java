@@ -1,12 +1,11 @@
 package com.example.payfinewebapp.web;
 
+import com.example.payfinewebapp.DTO.FineRefDTO;
 import com.example.payfinewebapp.entity.Fine;
 import com.example.payfinewebapp.service.FineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("paycourtfine")
@@ -26,6 +25,13 @@ public class FineWeb
     {
         return "enterDetails";
     }
+
+    @PostMapping
+    public String FindFine(@ModelAttribute FineRefDTO finerefdto)
+    {
+        return "redirect:/paycourtfine/payonlineenterdetails";
+    }
+
 
     @GetMapping("paymentscreen")
     public String PayFine()
