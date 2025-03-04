@@ -5,6 +5,7 @@ import com.example.payfinewebapp.entity.Fine;
 import com.example.payfinewebapp.service.FineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -21,15 +22,16 @@ public class FineWeb
     }
 
     @GetMapping("payonlineenterdetails")
-    public String FindFine()
+    public String FindFine(Model model)
     {
+        model.addAttribute("finerefdto", new FineRefDTO());
         return "enterDetails";
     }
 
     @PostMapping
     public String FindFine(@ModelAttribute FineRefDTO finerefdto)
     {
-        return "redirect:/paycourtfine/payonlineenterdetails";
+        return "redirect:/paycourtfine/paymentscreen";
     }
 
 
