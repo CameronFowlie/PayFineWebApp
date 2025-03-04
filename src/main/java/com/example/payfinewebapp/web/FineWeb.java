@@ -1,6 +1,7 @@
 package com.example.payfinewebapp.web;
 
 import com.example.payfinewebapp.DTO.FineRefDTO;
+import com.example.payfinewebapp.DTO.PaymentDTO;
 import com.example.payfinewebapp.entity.Fine;
 import com.example.payfinewebapp.service.FineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +32,25 @@ public class FineWeb
     @PostMapping
     public String FindFine(@ModelAttribute FineRefDTO finerefdto)
     {
+        String test = "RCode " + finerefdto.getReferenceCode() + " Postcode: " + finerefdto.getPostcode() + " House No: " + finerefdto.getHouseNo();
+        System.out.println(test);
         return "redirect:/paycourtfine/paymentscreen";
     }
 
 
     @GetMapping("paymentscreen")
-    public String PayFine()
+    public String PayFine(Model model)
     {
+        model.addAttribute("paymentdto", new PaymentDTO());
         return "paymentScreen";
+    }
+
+    @PostMapping("paymentscreen")
+    public String FindFine(@ModelAttribute PaymentDTO paymentdto)
+    {
+        String test = "Card Num " + paymentdto.getCardNumber() + " Amount: " + paymentdto.getAmountToPay() + " CVC: " + paymentdto.getCvcNumber();
+        System.out.println(test);
+        return "redirect:/paycourtfine/paymentconfirmationscreen";
     }
 
     @GetMapping("paymentconfirmationscreen")

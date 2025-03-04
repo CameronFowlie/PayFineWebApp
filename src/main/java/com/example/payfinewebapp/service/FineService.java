@@ -48,7 +48,7 @@ public class FineService
         fine.setReferenceCode(fineDetails.getReferenceCode());
         fine.setPaymentDeadline(fineDetails.getPaymentDeadline());
         fine.setPostcode(fineDetails.getPostcode());
-        fine.setHouseNo(fineDetails.getPostcode());
+        fine.setHouseNo(fineDetails.getHouseNo());
         return fineRepo.save(fine);
     }
 }
