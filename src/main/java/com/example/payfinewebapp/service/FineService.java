@@ -31,9 +31,14 @@ public class FineService
         return fineRepo.findById(id);
     }
 
-    public Optional<Fine> GetFineByReference(String refCode, String postcode, String houseNo)
+    public Optional<Fine> GetFineByReferencePlus(String refCode, String postcode, String houseNo)
     {
         return fineRepo.findByReferenceCodeAndPostcodeAndHouseNo(refCode, postcode, houseNo);
+    }
+
+    public Optional<Fine> GetFineByReference(String refCode)
+    {
+        return fineRepo.findByReferenceCode(refCode);
     }
 
     public void DeleteFine(Long id)

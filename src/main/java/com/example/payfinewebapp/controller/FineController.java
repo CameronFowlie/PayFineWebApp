@@ -60,7 +60,7 @@ public class FineController
     {
         //String test = "RCode " + _fine.get("referenceCode") + " Postcode: " + _fine.get("postcode") + " House No: " + _fine.get("houseNo");
 
-        Fine fine = fineService.GetFineByReference(_fine.get("referenceCode"), _fine.get("postcode"), _fine.get("houseNo")).orElseThrow();
+        Fine fine = fineService.GetFineByReferencePlus(_fine.get("referenceCode"), _fine.get("postcode"), _fine.get("houseNo")).orElseThrow();
 
         return ResponseEntity.ok(fine);
         //Fine fine = fineService.GetFineById(id).orElseThrow();

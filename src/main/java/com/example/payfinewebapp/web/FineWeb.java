@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("paycourtfine")
 public class FineWeb
@@ -34,13 +36,14 @@ public class FineWeb
     {
         String test = "RCode " + finerefdto.getReferenceCode() + " Postcode: " + finerefdto.getPostcode() + " House No: " + finerefdto.getHouseNo();
         System.out.println(test);
-        return "redirect:/paycourtfine/paymentscreen";
+        return "redirect:/paycourtfine/paymentscreen/" + finerefdto.getReferenceCode();
     }
 
-
-    @GetMapping("paymentscreen")
-    public String PayFine(Model model)
+    @GetMapping("paymentscreen/{ref}")
+    public String PayFine(@PathVariable String ref, Model model)
     {
+        Optional<Fine> fine = fineService.GetFineByReference(ref);
+        model.addAttribute("fine", fine.get());
         model.addAttribute("paymentdto", new PaymentDTO());
         return "paymentScreen";
     }
