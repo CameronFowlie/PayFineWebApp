@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Controller
@@ -18,9 +19,22 @@ public class FineWeb
     @Autowired
     private FineService fineService;
 
+    Boolean test = false;
+
     @GetMapping
     public String HomePage()
     {
+        if (!test)
+        {
+            Fine f1 = new Fine("feiwfgw1", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
+            Fine f2 = new Fine("feiwfgw2", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
+            Fine f3 = new Fine("feiwfgw3", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
+
+            fineService.CreateFine(f1);
+            fineService.CreateFine(f2);
+            fineService.CreateFine(f3);
+            test = true;
+        }
         return "index";
     }
 

@@ -21,8 +21,6 @@ public class FineController
     @Autowired
     private FineRepository fineRepo;
 
-    Boolean test = false;
-
     @PostMapping
     public ResponseEntity<Fine> CreateFine(@RequestBody Fine _fine)
     {
@@ -41,17 +39,6 @@ public class FineController
     @GetMapping
     public List<Fine> getAllFines()
     {
-        if (!test)
-        {
-            Fine f1 = new Fine("feiwfgw1", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
-            Fine f2 = new Fine("feiwfgw2", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
-            Fine f3 = new Fine("feiwfgw3", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
-
-            CreateFine(f1);
-            CreateFine(f2);
-            CreateFine(f3);
-            test = true;
-        }
         return fineService.GetAllFines();
     }
 
