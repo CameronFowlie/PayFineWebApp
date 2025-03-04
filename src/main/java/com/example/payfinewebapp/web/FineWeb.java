@@ -62,12 +62,13 @@ public class FineWeb
         return "paymentScreen";
     }
 
-    @PostMapping("paymentscreen")
-    public String FindFine(@ModelAttribute PaymentDTO paymentdto)
+    @PostMapping("paymentscreen/{ref}")
+    public String FindFine(@PathVariable String ref, @ModelAttribute PaymentDTO paymentdto)
     {
         String test = "Card Num " + paymentdto.getCardNumber() + " Amount: " + paymentdto.getAmountToPay() + " CVC: " + paymentdto.getCvcNumber();
+
         System.out.println(test);
-        return "redirect:/paycourtfine/paymentconfirmationscreen";
+        return "redirect:/paycourtfine/paymentconfirmationscreen/" + ref;
     }
 
     @GetMapping("paymentconfirmationscreen/{ref}")

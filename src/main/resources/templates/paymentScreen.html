@@ -33,10 +33,11 @@
 
 
     <p class="govuk-body"><strong>£</strong> <span th:text="${fine.amountDue}">Amount left</span></p>
+    <p class="govuk-body"><strong>REF</strong> <span th:text="${fine.referenceCode}">Amount left</span></p>
 
 
     <!-- Create Student Form -->
-    <form th:action="@{/paycourtfine/paymentscreen}" th:object="${paymentdto}" method="post" class="mb-4">
+    <form th:action="@{/paycourtfine/paymentscreen/{id}(id=${fine.referenceCode})}" th:object="${paymentdto}" method="post" class="mb-4">
         <div class="form-group">
             <label for="amounttopay">Amount to Pay (£'s):</label>
             <input type="number" class="form-control" th:field="*{amountToPay}" required>
