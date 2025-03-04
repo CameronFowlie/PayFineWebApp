@@ -70,9 +70,11 @@ public class FineWeb
         return "redirect:/paycourtfine/paymentconfirmationscreen";
     }
 
-    @GetMapping("paymentconfirmationscreen")
-    public String ConfirmFine()
+    @GetMapping("paymentconfirmationscreen/{ref}")
+    public String ConfirmFine(@PathVariable String ref, Model model)
     {
+        Optional<Fine> fine = fineService.GetFineByReference(ref);
+        model.addAttribute("fine", fine.get());
         return "paymentConfirmationScreen";
     }
 }
