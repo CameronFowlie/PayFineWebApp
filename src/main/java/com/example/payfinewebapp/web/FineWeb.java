@@ -24,7 +24,7 @@ public class FineWeb
     @GetMapping("find")
     public String ViewFine()
     {
-        return "find-fine";
+        return "enterDetails";
     }
 
     @GetMapping("view/{id}")
