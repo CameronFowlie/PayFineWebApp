@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface FineRepository extends JpaRepository<Fine, Long>
 {
     Optional<Fine> findByReferenceCodeAndPostcodeAndHouseNo(String refCode, String postcode, String houseNo);
+
 }

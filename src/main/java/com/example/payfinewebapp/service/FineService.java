@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +19,16 @@ public class FineService
     public Fine CreateFine(Fine fine)
     {
         return fineRepo.save(fine);
+    }
+
+    public List<Fine> GetAllFines()
+    {
+        return fineRepo.findAll();
+    }
+
+    public Optional<Fine> GetFineById(Long id)
+    {
+        return fineRepo.findById(id);
     }
 
     public Optional<Fine> GetFineByReference(String refCode, String postcode, String houseNo)
@@ -40,6 +51,4 @@ public class FineService
         fine.setHouseNo(fineDetails.getPostcode());
         return fineRepo.save(fine);
     }
-
-
 }
