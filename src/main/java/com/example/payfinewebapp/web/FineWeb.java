@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("Fines")
+@RequestMapping("fines")
 public class FineWeb
 {
     @Autowired

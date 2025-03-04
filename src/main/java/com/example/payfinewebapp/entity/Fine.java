@@ -11,10 +11,11 @@ public class Fine
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Double amountDue;
-
     @Column(unique = true)
     private String referenceCode;
+
+    private Double amountDue;
+
 
     private LocalDate paymentDeadline;
 
@@ -27,7 +28,7 @@ public class Fine
 
     }
 
-    public Fine(Double amountDue, String referenceCode, LocalDate paymentDeadline, String postcode, String houseNo)
+    public Fine(String referenceCode, Double amountDue, LocalDate paymentDeadline, String postcode, String houseNo)
     {
         this.amountDue = amountDue;
         this.referenceCode = referenceCode;
