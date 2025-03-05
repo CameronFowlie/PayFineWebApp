@@ -17,7 +17,9 @@ public class FineService
 
     public Fine CreateFine(Fine fine)
     {
-        return fineRepo.save(fine);
+        Fine entryFine = new Fine(fine.getReferenceCode(), fine.getAmountDue(), fine.getPaymentDeadline(), fine.getPostcode().toUpperCase(), fine.getHouseNo().toUpperCase());
+
+        return fineRepo.save(entryFine);
     }
 
     public List<Fine> GetAllFines()
@@ -32,7 +34,7 @@ public class FineService
 
     public Optional<Fine> GetFineByReferencePlus(String refCode, String postcode, String houseNo)
     {
-        return fineRepo.findByReferenceCodeAndPostcodeAndHouseNo(refCode, postcode, houseNo);
+        return fineRepo.findByReferenceCodeAndPostcodeAndHouseNo(refCode, postcode.toUpperCase(), houseNo.toUpperCase());
     }
 
     public Optional<Fine> GetFineByReference(String refCode)

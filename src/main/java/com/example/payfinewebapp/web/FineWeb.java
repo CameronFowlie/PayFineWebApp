@@ -67,10 +67,15 @@ public class FineWeb {
                     model.addAttribute("postError", "Not a valid UK post code");
                 }
             }
-            if(fineService.GetFineByReference(finerefdto.getReferenceCode()).isEmpty())
-            {
-                model.addAttribute("refError", "Reference number not valid");
-            }
+            model.addAttribute("title", "Enter details");
+            model.addAttribute("error", "No Fine found, Please Check entered details");
+            model.addAttribute("finerefdto", finerefdto);
+            return "enterDetails";
+        }
+
+        if(fineService.GetFineByReference(finerefdto.getReferenceCode()).isEmpty())
+        {
+            model.addAttribute("refError", "Reference number not valid");
             model.addAttribute("title", "Enter details");
             model.addAttribute("error", "No Fine found, Please Check entered details");
             model.addAttribute("finerefdto", finerefdto);

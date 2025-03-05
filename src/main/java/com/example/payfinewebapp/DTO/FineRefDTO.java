@@ -8,10 +8,10 @@ public class FineRefDTO
 {
     private String referenceCode;
 
-    @Pattern(regexp = "^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$", message = "Not a valid UK post code")
+    @Pattern(regexp = "^[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}$", message = "Not a valid UK post code")
     private String postcode;
 
-    @Pattern(regexp = "^[0-9]{1,2}[A-Z]?$", message = "Not a valid house number")
+    @Pattern(regexp = "^[0-9]{1,2}[A-Za-z]?$", message = "Not a valid house number")
     private String houseNo;
 
     public FineRefDTO()
