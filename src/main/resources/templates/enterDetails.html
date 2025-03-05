@@ -47,19 +47,28 @@
 
             <!-- Image remains aligned to the right -->
             <img th:src="@{/locateref.png}" alt="Reference Location" class="img-fluid" style="max-width: 650px;">
+
         </div>
         <div class="form-group">
             <label for="referencenumber">Reference Number:</label>
-            <input type="text" class="form-control" th:field="*{referenceCode}" required>
+            <input type="text" class="form-control" th:if="${error}" style="color: red;"  th:field="*{referenceCode}" required>
+            <input type="text" class="form-control" th:unless="${error}" th:field="*{referenceCode}" required>
+            <p th:if="${refError}" class="govuk-error-message" th:text="Invalid Reference Number"></p>
         </div>
         <div class="form-group">
             <label for="postcode">Postcode:</label>
             <input type="text" class="form-control" th:field="*{postcode}" required>
+            <div th:if="${#fields.hasErrors('postcode')}" th:errors="*{postcode}"></div>
+            <p th:if="${postError}" class="govuk-error-message" th:text="Invalid PostCode"></p>
         </div>
         <div class="form-group">
             <label for="housenumber">House Number:</label>
             <input type="text" class="form-control" th:field="*{houseNo}" required>
+            <p th:if="${houseError}" class="govuk-error-message" th:text="Invalid House Number"></p>
         </div>
+
+        <p th:if="${error}" class="govuk-error-message" th:text="${error}"></p>
+
         <button type="continue" class="govuk-button">
             Continue
             <svg class="ms-2 mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

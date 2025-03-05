@@ -1,13 +1,17 @@
 package com.example.payfinewebapp.DTO;
 
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.CreditCardNumber;
 public class PaymentDTO
 {
     //private String referenceCode;
 
     private Double amountToPay;
 
+    @CreditCardNumber(message = "Credit card number is invalid")
     private String cardNumber;
 
+    @Size(min = 3, max = 3, message = "CVC number is invalid")
     private String cvcNumber;
 
     private String expiryDate;
