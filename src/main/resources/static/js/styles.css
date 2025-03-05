@@ -1,0 +1,81 @@
+/* Import the GOV.UK Design System */
+@import url("https://assets.publishing.service.gov.uk/government-frontend/govuk-frontend.min.css");
+
+/* Ensure the correct font family is applied */
+body {
+    font-family: "GDS Transport", Arial, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: black !important;
+    padding: 10px 20px;
+}
+
+.navbar-nav .nav-link, .navbar-brand {
+    font-size: 19px;  /* GOV.UK default body text size */
+    font-family: "GDS Transport", Arial, sans-serif;
+    color: white !important;
+}
+.govuk-button{
+font-family:GDS Transport,arial,sans-serif;
+font-weight:400;
+font-size:1rem;
+line-height:1.1875;
+box-sizing:border-box;
+display:inline-block;
+position:relative;
+width:100%;
+margin:0 0 22px;
+padding:8px 10px 7px;
+border:2px solid transparent;
+border-radius:0;
+color:#fff;
+background-color:#00703c;
+box-shadow:0 2px 0 #002d18;
+text-align:center;
+vertical-align:top;
+cursor:pointer;
+-webkit-appearance:none}
+@media print{
+.govuk-button{font-family:sans-serif}}
+@media (min-width:40.0625em){
+.govuk-button{font-size:1.1875rem;line-height:1}}
+@media print{.govuk-button{font-size:14pt;line-height:19px}}@media (min-width:40.0625em){.govuk-button{margin-bottom:32px;width:auto}}
+
+.button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;}
+.button5 {border-radius: 50%;}
+
+/* Headings using GOV.UK Design System */
+h1 {
+    font-size: 48px; /* govuk-heading-xl */
+    line-height: 50px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px; /* govuk-heading-m */
+    line-height: 30px;
+    font-weight: bold;
+}
+
+/* General text */
+p {
+    font-size: 19px; /* govuk-body */
+    line-height: 25px;
+}

@@ -1,12 +1,11 @@
 package com.example.payfinewebapp.service;
 
+import com.example.payfinewebapp.DTO.PaymentDTO;
 import com.example.payfinewebapp.entity.Fine;
 import com.example.payfinewebapp.repository.FineRepository;
-import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,5 +54,20 @@ public class FineService
         fine.setPostcode(fineDetails.getPostcode());
         fine.setHouseNo(fineDetails.getHouseNo());
         return fineRepo.save(fine);
+    }
+
+    public Fine PayFine(String ref, PaymentDTO payment)
+    {
+        Optional<Fine> fine = GetFineByReference(ref);
+        fine.get().setAmountDue(Math.clamp(fine.get().getAmountDue()-payment.getAmountToPay(),0,1000));
+        if(fine.get().getAmountDue() == 0)
+        {
+            DeleteFine(fine.get().getId());
+            return null;
+        }
+        else
+        {
+            return UpdateFine(fine.get().getId(), fine.orElse(null));
+        }
     }
 }
