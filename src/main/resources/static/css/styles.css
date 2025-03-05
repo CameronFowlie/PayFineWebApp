@@ -6,6 +6,13 @@
     --govuk-frontend-breakpoint-desktop: 48.0625rem
 }
 
+
+
+.fh {
+    min-height: calc(100vh - 280px);
+
+}
+
 .govuk-link {
     font-family: GDS Transport, arial, sans-serif;
     -webkit-font-smoothing: antialiased;
