@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--  <title th:text="${title}">Enter details</title>-->
 
-
     <!-- GOV.UK Design System CSS -->
     <link rel="stylesheet" href="https://assets.publishing.service.gov.uk/government-frontend/govuk-frontend.min.css">
 
@@ -18,23 +17,72 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
+<!--Heading and body-->
+<div th:replace="fragments/header :: header"></div>
+
 <body class="govuk-body">
 
 <!-- Include Navbar -->
-<div th:replace="fragments/navbar :: navbar"></div>
+<!--<div th:replace="fragments/navbar :: navbar"></div>-->
 
 
 <!--Heading and body-->
+<!--<div class="govuk-width-container">-->
+<!--    <main class="govuk-main-wrapper" id="main-content">-->
+<!--        <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay a court fine'">Pay a court fine</h1>-->
 
-<div class="container mt-5 govuk-!-text-colour">
-    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay a court fine'">Pay a court fine</h1>
+<!--        <div class="row">-->
+<!--            &lt;!&ndash; Left column: Text and form &ndash;&gt;-->
+<!--            <div class="col-md-6">-->
+<!--                <p class="govuk-body"-->
+<!--                   th:text="${message} ?: 'See image on the right to locate your Reference Number on your letter.'">-->
+<!--                    Ref No.-->
+<!--                </p>-->
+<!--                <p class="govuk-body"-->
+<!--                   th:text="${message} ?: 'Alternatively, see image on the right to locate the QR to scan to skip this step.'">-->
+<!--                    QR code.-->
+<!--                </p>-->
+
+<!--                &lt;!&ndash; Form &ndash;&gt;-->
+<!--                <form th:action="@{/paycourtfine}" th:object="${finerefdto}" method="post" class="mb-4">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="referencenumber">Reference Number:</label>-->
+<!--                        <input type="text" class="form-control" th:field="*{referenceCode}" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="postcode">Postcode:</label>-->
+<!--                        <input type="text" class="form-control" th:field="*{postcode}" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="housenumber">House Number:</label>-->
+<!--                        <input type="text" class="form-control" th:field="*{houseNo}" required>-->
+<!--                    </div>-->
+
+<!--                    <button type="continue" class="govuk-button">Continue</button>-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Right column: Image &ndash;&gt;-->
+<!--            <div class="col-md-6 d-flex justify-content-end">-->
+<!--                <img th:src="@{/locateref.png}" alt="Reference Location" class="img-fluid" style="max-width: 100%; max-height: 100%; margin-bottom: 600px">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </main>-->
+<!--</div>-->
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content">
+        <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay a court fine'">Pay a court fine</h1>
+
 
 
     <!-- Create Student Form -->
     <form th:action="@{/paycourtfine}" th:object="${finerefdto}" method="post" class="mb-4">
-        <div class="d-flex align-items-center">
+<!--        <div class="d-flex align-items-center">-->
+            <div class="container mt-5 govuk-!-text-colour">
+
             <!-- Text container with stacked paragraphs -->
-            <div class="me-3">
+            <div class="">
                 <p class="govuk-body"
                    th:text="${message} ?: 'See image on the right to locate your Reference Number on your letter.'">
                     Ref No.
@@ -79,26 +127,10 @@
             </svg>
         </button>
     </form>
-
-    <!--  &lt;!&ndash;  Button&ndash;&gt;-->
-    <!--  <a th:href="${payOnlineUrl} ?: '#'" class="btn btn-success btn-lg d-inline-flex align-items-center">-->
-    <!--    Start now-->
-    <!--    <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
-    <!--         viewBox="0 0 16 16">-->
-    <!--      <path fill-rule="evenodd"-->
-    <!--            d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>-->
-    <!--    </svg>-->
-    <!--  </a>-->
-
-    <!--      <a th:href="${payOnlineUrl} ?: '#'" role="button" draggable="false" class="govuk-button govuk-button&#45;&#45;start" data-module="govuk-button">-->
-    <!--          Start now-->
-    <!--          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">-->
-    <!--              <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />-->
-    <!--          </svg>-->
-    <!--      </a>-->
-
-
+    </main>
 </div>
+
+<!--FOOTER-->
 <footer class="govuk-footer">
     <div class="govuk-width-container">
         <div class="govuk-footer__meta">
