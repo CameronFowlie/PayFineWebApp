@@ -24,6 +24,7 @@
 
 
 <!--Heading and body-->
+<div th:replace="fragments/header :: header"></div>
 
 <div class="container mt-5 govuk-!-text-colour">
     <h1 class="govuk-heading-xl" th:text="${header} ?: 'Amount you owe:'">Amount you owe</h1>
@@ -65,6 +66,8 @@
                    maxlength="5"
                    placeholder="MM/YY"
                    inputmode="numeric">
+            <p th:if="${expiryError}" class="govuk-error-message" th:text="${expiryError}"></p>
+
             <button type="continue" class="btn btn-success btn-lg d-inline-flex mt-4">
                 Continue
                 <svg class="ms-2 mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

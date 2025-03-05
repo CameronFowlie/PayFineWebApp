@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -54,6 +55,7 @@ public class FineWeb {
     @PostMapping
     public String FindFine(@Valid @ModelAttribute FineRefDTO finerefdto, BindingResult result, Model model)
     {
+        Boolean hasError = false;
         if(result.hasErrors())
         {
             for(ObjectError error : result.getAllErrors())
@@ -67,15 +69,17 @@ public class FineWeb {
                     model.addAttribute("postError", "Not a valid UK post code");
                 }
             }
-            model.addAttribute("title", "Enter details");
-            model.addAttribute("error", "No Fine found, Please Check entered details");
-            model.addAttribute("finerefdto", finerefdto);
-            return "enterDetails";
+            hasError = true;
         }
 
         if(fineService.GetFineByReference(finerefdto.getReferenceCode()).isEmpty())
         {
             model.addAttribute("refError", "Reference number not valid");
+            hasError = true;
+        }
+
+        if(hasError)
+        {
             model.addAttribute("title", "Enter details");
             model.addAttribute("error", "No Fine found, Please Check entered details");
             model.addAttribute("finerefdto", finerefdto);
@@ -105,6 +109,7 @@ public class FineWeb {
     @PostMapping("paymentscreen/{ref}")
     public String FindFine(@Valid @ModelAttribute PaymentDTO paymentdto, BindingResult result,@PathVariable String ref, Model model)
     {
+        Boolean hasError = false;
         if(result.hasErrors())
         {
             for(ObjectError error : result.getAllErrors())
@@ -122,6 +127,31 @@ public class FineWeb {
                     model.addAttribute("amountError", "Payed amount must be more than 0");
                 }
             }
+            hasError = true;
+        }
+
+        String[] splitDate = paymentdto.getExpiryDate().split("/");
+        int expiryMonth = Integer.parseInt(splitDate[0]);
+        int expiryYear = Integer.parseInt(splitDate[1]);
+
+        Boolean validDate = true;
+        Calendar c = Calendar.getInstance();
+        int currentMonth = c.get(Calendar.MONTH)+1;
+        int currentYear = Integer.parseInt(String.valueOf(c.get(Calendar.YEAR)).substring(2));
+
+        if(currentYear > expiryYear)
+            validDate = false;
+        if(currentYear == expiryYear && currentMonth > expiryMonth)
+            validDate = false;
+
+        if(!validDate)
+        {
+            model.addAttribute("expiryError", "Expiry date is not in the future");
+            hasError = true;
+        }
+
+        if(hasError)
+        {
             model.addAttribute("Error", "Invalid Payment Details");
             model.addAttribute("title", "Payment details");
             Optional<Fine> fine = fineService.GetFineByReference(ref);
@@ -129,6 +159,7 @@ public class FineWeb {
             model.addAttribute("paymentdto", paymentdto);
             return "paymentscreen";
         }
+
         String test = "Card Num " + paymentdto.getCardNumber() + " Amount: " + paymentdto.getAmountToPay() + " CVC: " + paymentdto.getCvcNumber();
 
         Fine fine = fineService.PayFine(ref, paymentdto);
