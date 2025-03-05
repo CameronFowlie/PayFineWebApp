@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -39,7 +42,7 @@ public class FineWeb {
             test = true;
         }
         model.addAttribute("title", "Pay a court fine");
-        return "index";
+        return "indexGov";
     }
 
     @GetMapping("payonlineenterdetails")
@@ -53,10 +56,28 @@ public class FineWeb {
     {
         if(result.hasErrors())
         {
+            for(ObjectError error : result.getAllErrors())
+            {
+                if(Objects.requireNonNull(error.getDefaultMessage()).contains("house"))
+                {
+                    model.addAttribute("houseError", "Not a valid house number");
+                }
+                else if(error.getDefaultMessage().contains("post"))
+                {
+                    model.addAttribute("postError", "Not a valid UK post code");
+                }
+            }
+            if(fineService.GetFineByReference(finerefdto.getReferenceCode()).isEmpty())
+            {
+                model.addAttribute("refError", "Reference number not valid");
+            }
+            model.addAttribute("title", "Enter details");
+            model.addAttribute("error", "No Fine found, Please Check entered details");
+            model.addAttribute("finerefdto", finerefdto);
             return "enterDetails";
         }
+
         Optional<Fine> fine = fineService.GetFineByReferencePlus(finerefdto.getReferenceCode(),finerefdto.getPostcode(),finerefdto.getHouseNo());
-        String test = "RCode " + finerefdto.getReferenceCode() + " Postcode: " + finerefdto.getPostcode() + " House No: " + finerefdto.getHouseNo();
         if(fine.isEmpty())
         {
             model.addAttribute("title", "Enter details");
@@ -81,12 +102,39 @@ public class FineWeb {
     {
         if(result.hasErrors())
         {
-            return "redirect:/paycourtfine/paymentscreen/" + ref;
+            for(ObjectError error : result.getAllErrors())
+            {
+                if (Objects.requireNonNull(error.getDefaultMessage()).contains("card"))
+                {
+                    model.addAttribute("creditError", "Credit card number is invalid");
+                }
+                else if (error.getDefaultMessage().contains("CVC"))
+                {
+                    model.addAttribute("cvcError", "CVC number is invalid");
+                }
+                else if (error.getDefaultMessage().contains("Payed"))
+                {
+                    model.addAttribute("amountError", "Payed amount must be more than 0");
+                }
+            }
+            model.addAttribute("Error", "Invalid Payment Details");
+            model.addAttribute("title", "Payment details");
+            Optional<Fine> fine = fineService.GetFineByReference(ref);
+            model.addAttribute("fine", fine.get());
+            model.addAttribute("paymentdto", paymentdto);
+            return "paymentscreen";
         }
         String test = "Card Num " + paymentdto.getCardNumber() + " Amount: " + paymentdto.getAmountToPay() + " CVC: " + paymentdto.getCvcNumber();
 
-        fineService.PayFine(ref, paymentdto);
-        return "redirect:/paycourtfine/paymentconfirmationscreen/" + ref;
+        Fine fine = fineService.PayFine(ref, paymentdto);
+        if(fine == null)
+        {
+            return "fineSettled";
+        }
+        else
+        {
+            return "redirect:/paycourtfine/paymentconfirmationscreen/" + ref;
+        }
     }
 
     @GetMapping("paymentconfirmationscreen/{ref}")

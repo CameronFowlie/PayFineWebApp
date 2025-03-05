@@ -6,6 +6,7 @@ public class PaymentDTO
 {
     //private String referenceCode;
 
+    @Min(value = 0, message = "Payed amount must be more than 0")
     private Double amountToPay;
 
     @CreditCardNumber(message = "Credit card number is invalid")

@@ -41,15 +41,21 @@
     <form th:action="@{/paycourtfine/paymentscreen/{id}(id=${fine.referenceCode})}" th:object="${paymentdto}" method="post" class="mb-4">
         <div class="form-group">
             <label for="amounttopay">Amount to Pay (£'s):</label>
-            <input type="number" class="form-control" th:field="*{amountToPay}" required>
+            <input type="number" class="form-control" th:if="${amountError}" style="color: red;" th:field="*{amountToPay}" required>
+            <input type="number" class="form-control" th:unless="${amountError}"  th:field="*{amountToPay}" required>
+            <p th:if="${amountError}" class="govuk-error-message" th:text="${amountError}"></p>
         </div>
         <div class="form-group">
             <label for="cardnumber">Card Number:</label>
-            <input type="text" class="form-control" th:field="*{cardNumber}" required>
+            <input type="text" class="form-control" th:if="${creditError}" style="color: red;" th:field="*{cardNumber}" required>
+            <input type="text" class="form-control" th:unless="${creditError}" th:field="*{cardNumber}" required>
+            <p th:if="${creditError}" class="govuk-error-message" th:text="${creditError}"></p>
         </div>
         <div class="form-group">
             <label for="cvc">CVC (security) Number:</label>
-            <input type="number" class="form-control" th:field="*{cvcNumber}" required>
+            <input type="number" class="form-control" th:if="${cvcError}" style="color: red;" th:field="*{cvcNumber}" required>
+            <input type="number" class="form-control" th:unless="${cvcError}" th:field="*{cvcNumber}" required>
+            <p th:if="${cvcError}" class="govuk-error-message" th:text="${cvcError}"></p>
         </div>
         <div class="form-group">
             <label for="expirydate">Card Expiry Date (MM/YY):</label>

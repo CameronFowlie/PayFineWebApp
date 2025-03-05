@@ -51,20 +51,21 @@
         </div>
         <div class="form-group">
             <label for="referencenumber">Reference Number:</label>
-            <input type="text" class="form-control" th:if="${error}" style="color: red;"  th:field="*{referenceCode}" required>
-            <input type="text" class="form-control" th:unless="${error}" th:field="*{referenceCode}" required>
-            <p th:if="${refError}" class="govuk-error-message" th:text="Invalid Reference Number"></p>
+            <input type="text" class="form-control" th:if="${refError}" style="color: red;"  th:field="*{referenceCode}" required>
+            <input type="text" class="form-control" th:unless="${refError}" th:field="*{referenceCode}" required>
+            <p th:if="${refError}" class="govuk-error-message" th:text="${refError}"></p>
         </div>
         <div class="form-group">
             <label for="postcode">Postcode:</label>
-            <input type="text" class="form-control" th:field="*{postcode}" required>
-            <div th:if="${#fields.hasErrors('postcode')}" th:errors="*{postcode}"></div>
-            <p th:if="${postError}" class="govuk-error-message" th:text="Invalid PostCode"></p>
+            <input type="text" class="form-control" th:if="${postError}" style="color: red;" th:field="*{postcode}" required>
+            <input type="text" class="form-control" th:unless="${postError}" th:field="*{postcode}" required>
+            <p th:if="${postError}" class="govuk-error-message" th:text="${postError}"></p>
         </div>
         <div class="form-group">
             <label for="housenumber">House Number:</label>
-            <input type="text" class="form-control" th:field="*{houseNo}" required>
-            <p th:if="${houseError}" class="govuk-error-message" th:text="Invalid House Number"></p>
+            <input type="text" class="form-control" th:if="${houseError}" style="color: red;" th:field="*{houseNo}" required>
+            <input type="text" class="form-control" th:unless="${houseError}" th:field="*{houseNo}" required>
+            <p th:if="${houseError}" class="govuk-error-message" th:text="${houseError}"></p>
         </div>
 
         <p th:if="${error}" class="govuk-error-message" th:text="${error}"></p>
