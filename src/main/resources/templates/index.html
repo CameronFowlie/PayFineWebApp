@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:inline="text">
+    <title th:text="${title}">Pay a court fine</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -44,9 +45,6 @@
     </div>
 </div>
 
-<!-- Include Navbar -->
-<div th:replace="fragments/navbar :: navbar"></div>
-
 
 <!--Heading and body-->
 <header class="govuk-header" data-module="govuk-header">
@@ -69,6 +67,9 @@
         </div>
     </div>
 </header>
+
+<!-- Include Navbar -->
+<div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container mt-5 govuk-!-text-colour">
     <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay a court fine'">Pay a court fine</h1>
