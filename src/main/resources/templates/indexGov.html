@@ -28,13 +28,11 @@
 </head>
 
 
-
-
-
 <body class="govuk-template__body">
 
 <!--Cookie banner-->
-<div th:unless="${hideCookies}" class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on [name of service]">
+<div th:unless="${hideCookies}" class="govuk-cookie-banner" data-nosnippet role="region"
+     aria-label="Cookies on [name of service]">
     <div class="govuk-cookie-banner__message govuk-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
@@ -43,7 +41,8 @@
                 </h2>
                 <div class="govuk-cookie-banner__content">
                     <p class="govuk-body">We use some essential cookies to make this service work.</p>
-                    <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+                    <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the
+                        service and make improvements.</p>
                 </div>
             </div>
         </div>
@@ -74,55 +73,63 @@
         </div>
         <hr style="width:100%;text-align:left;margin-left:0">
 
-    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay your TV license fine'">Pay a court fine</h1>
+        <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay your TV license fine'">Pay a court fine</h1>
 
-    <p class="govuk-body" th:text="${message} ?: 'You can pay the license fee fine or charge online, by phone, or at your local court office.'">
-        You can pay a court fine online or by phone.</p>
+        <p class="govuk-body"
+           th:text="${message} ?: 'You can pay the license fee fine or charge online, by phone, or at your local court office.'">
+            You can pay a court fine online or by phone.</p>
 
-    <h2 class="govuk-heading-m" th:text="${message} ?: 'How to pay'">How to pay</h2>
-    <p class="govuk-body"
-       th:text="${message} ?: 'You need your ‘notice of fine’ and a debit or credit card. You must pay by the date given in your notice of fine.'">
-        You need your ‘notice of fine’ and a debit or credit card. You must pay by the date given in your notice of
-        fine.</p>
+        <h2 class="govuk-heading-m" th:text="${message} ?: 'How to pay'">How to pay</h2>
+        <p class="govuk-body"
+           th:text="${message} ?: 'You need your ‘notice of fine’ and a debit or credit card. You must pay by the date given in your notice of fine.'">
+            You need your ‘notice of fine’ and a debit or credit card. You must pay by the date given in your notice of
+            fine.</p>
 
-    <p class="govuk-body"
-       th:text="${message} ?: 'If you’ve lost your notice of fine, contact the court where you received the fine.'">
-        If you’ve lost your notice of fine, contact the court where you received the fine.</p>
+        <p class="govuk-body"
+           th:text="${message} ?: 'If you’ve lost your notice of fine, contact the court where you received the fine.'">
+            If you’ve lost your notice of fine, contact the court where you received the fine.</p>
 
-    <p class="govuk-body"
-       th:text="${message} ?: 'The court might reject your payment if enforcement action has already started.'">
-        The court might reject your payment if enforcement action has already started.</p>
+        <p class="govuk-body"
+           th:text="${message} ?: 'The court might reject your payment if enforcement action has already started.'">
+            The court might reject your payment if enforcement action has already started.</p>
 
-<!--    <p class="govuk-body"-->
-<!--       th:text="${message} ?: 'If you were fined at a Crown Court, you need your account number and division code.'">-->
-<!--        If you were fined at a Crown Court, you need your account number and division code.</p>-->
+        <!--    <p class="govuk-body"-->
+        <!--       th:text="${message} ?: 'If you were fined at a Crown Court, you need your account number and division code.'">-->
+        <!--        If you were fined at a Crown Court, you need your account number and division code.</p>-->
 
-    <h3 class="govuk-heading-m">Pay online</h3>
-    <p class="govuk-body">You can pay online using the court fines service.</p>
+        <h3 class="govuk-heading-m">Pay online</h3>
+        <p class="govuk-body">You can pay online using the court fines service.</p>
 
-    <!--  Button-->
-    <a th:href="@{/paycourtfine/payonlineenterdetails}" class="govuk-button">
-        Start now
-        <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-             viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                  d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
-        </svg>
-    </a>
+        <!--  Button-->
+        <a th:href="@{/paycourtfine/payonlineenterdetails}" class="govuk-button">
+            Start now
+            <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
+            </svg>
+        </a>
 
-    <h3 class="govuk-heading-m" th:text="${message} ?: 'Pay by phone'">Pay by phone</h3>
-    <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9901 (in England)'">
-        England phone number.</p>
-    <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9980 (in Wales)'">
-        Wales phone number.</p>
-    <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9982 (in Scotland)'">
-        Scotland phone number.</p>
-    <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9984 (in NI)'">
-        NI phone number.</p>
+        <h3 class="govuk-heading-m" th:text="${message} ?: 'Pay by phone'">Pay by phone</h3>
+        <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9901 (in England)'">
+            England phone number.</p>
+        <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9980 (in Wales)'">
+            Wales phone number.</p>
+        <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9982 (in Scotland)'">
+            Scotland phone number.</p>
+        <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9984 (in NI)'">
+            NI phone number.</p>
 
         <h3 class="govuk-heading-m">Pay at your local court office</h3>
         <p class="govuk-body">If you reside in Northern Ireland, you can pay in person at your local court office.</p>
-        <img th:src="@{/courtoffice.png}" alt="Reference Location" class="img-fluid" style="max-width: 650px;">
+        <div style="display: flex; justify-content: flex-start;">
+
+            <img th:src="@{/courtoffice.png}" alt="Reference Location" class="img-fluid"
+                 style="width: 100%; max-width: 650px;">
+
+        </div>
+
+        <!--</div>-->
 
     </main>
 </div>
@@ -132,8 +139,9 @@
 <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
 <script type="module">
     import {
-      initAll
+        initAll
     } from '/javascripts/govuk-frontend.min.js'
+
     initAll()
 </script>
 </body>

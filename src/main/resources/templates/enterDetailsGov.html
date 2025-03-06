@@ -3,136 +3,146 @@
 
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:inline="text">
-  <title th:text="${title}">Enter details</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}">Enter details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- GOV.UK Design System CSS -->
-  <meta name="theme-color" content="#0b0c0c">
-  <link rel="icon" sizes="48x48" href="/static/favicon.ico">
-  <link rel="icon" sizes="any" href="/static/favicon.svg" type="image/svg+xml">
-  <link rel="mask-icon" href="/static/govuk-icon-mask.svg" color="#0b0c0c">
-  <link rel="apple-touch-icon" href="/static/govuk-icon-180.png">
-  <link rel="stylesheet" href="https://assets.publishing.service.gov.uk/government-frontend/govuk-frontend.min.css">
+    <!-- GOV.UK Design System CSS -->
+    <meta name="theme-color" content="#0b0c0c">
+    <link rel="icon" sizes="48x48" href="/static/favicon.ico">
+    <link rel="icon" sizes="any" href="/static/favicon.svg" type="image/svg+xml">
+    <link rel="mask-icon" href="/static/govuk-icon-mask.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" href="/static/govuk-icon-180.png">
+    <link rel="stylesheet" href="https://assets.publishing.service.gov.uk/government-frontend/govuk-frontend.min.css">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <!-- Custom Styles -->
-  <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 
 <body class="govuk-template__body">
 <script>
-  document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
+    document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
 </script>
 <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
 <div th:replace="fragments/header :: header"></div>
 
 <div class="govuk-width-container">
-  <main class="govuk-main-wrapper" id="main-content">
+    <main class="govuk-main-wrapper" id="main-content">
 
 
-    <div style="display: flex; justify-content: flex-end;">
-      <a th:href="@{/paycourtfine/w}" class="govuk-link">Cymraeg</a>
-    </div>
-
-    <hr style="width:100%;text-align:left;margin-left:0">
-
-    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay the license fee fine'">Pay a license fee fine</h1>
-
-    <!-- Create Student Form -->
-    <form th:action="@{/paycourtfine}" th:object="${finerefdto}" method="post" class="mb-4">
-      <!--        <div class="d-flex align-items-center">-->
-      <div class="container mt-5 govuk-!-text-colour">
-
-        <!-- Text container with stacked paragraphs -->
-        <div class="">
-          <p class="govuk-body"
-             th:text="${message} ?: 'To pay your Licence Fee Fine online you will need the Reference number from your &quot;Notice of Fine&quot; or &quot;Order&quot; as well as you postcode and house number.'">
-            One.
-          </p>
-          <p class="govuk-body"
-             th:text="${message} ?: 'Alternatively you can scan the QR code on your &quot;Fine Notice.&quot;'">
-           Two.
-          </p>
-          <p class="govuk-body"
-             th:text="${message} ?: 'The example &quot;Fine Notice&quot; pictured below shows where you will find this information. You will also need your debit or credit card details.'">
-            Three.
-          </p>
-          <p class="govuk-body"
-             th:text="${message} ?: 'No personal card details will be stored by HMCTS, your email address is required for PAYMENT receipt only and is passed to the payment processor.'">
-            Four.
-          </p>
-          <p class="govuk-body"
-             th:text="${message} ?: 'It is important to provide a valid email address if you require a receipt for this payment, without a valid email address a receipt cannot be issued.'">
-            Five.
-          </p>
+        <div style="display: flex; justify-content: flex-end;">
+            <a th:href="@{/paycourtfine/w}" class="govuk-link">Cymraeg</a>
         </div>
-        <hr style="width:100%;text-align:left;margin-left:0">
-        <h2 class="govuk-heading" th:text="${header} ?: 'Where to find the Reference number and QR'">Pay a license fee fine</h2>
-        <!-- Image remains aligned to the right -->
-        <img th:src="@{/locaterefqr.png}" alt="Reference Location" class="img-fluid" style="max-width: 650px;">
+
         <hr style="width:100%;text-align:left;margin-left:0">
 
-      </div>
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            Fine Account details
-          </legend>
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="referencenumber">Reference Number:</label>
-        <input type="text" class="govuk-input govuk-input--width-10" th:if="${refError}" style="color: red;"  th:field="*{referenceCode}" required>
-        <input type="text" class="govuk-input govuk-input--width-10" th:unless="${refError}" th:field="*{referenceCode}" required>
-        <p th:if="${refError}" class="govuk-error-message" th:text="${refError}"></p>
-      </div>
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="postcode">Postcode:</label>
-        <input type="text" class="govuk-input govuk-input--width-10" th:if="${postError}" style="color: red;" th:field="*{postcode}" required>
-        <input type="text" class="govuk-input govuk-input--width-10" th:unless="${postError}" th:field="*{postcode}" required>
-        <p th:if="${postError}" class="govuk-error-message" th:text="${postError}"></p>
-      </div>
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="housenumber">House Number:</label>
-        <input type="text" class="govuk-input govuk-input--width-10" th:if="${houseError}" style="color: red;" th:field="*{houseNo}" required>
-        <input type="text" class="govuk-input govuk-input--width-10" th:unless="${houseError}" th:field="*{houseNo}" required>
-        <p th:if="${houseError}" class="govuk-error-message" th:text="${houseError}"></p>
-      </div>
+        <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay the license fee fine'">Pay a license fee fine</h1>
 
-      <p th:if="${error}" class="govuk-error-message" th:text="${error}"></p>
-      </fieldset>
-      <button type="continue" class="govuk-button">
-        Continue
-        <svg class="ms-2 mb-1.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-             viewBox="0 0 16 16">
-          <path fill-rule="evenodd"
-                d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
-        </svg>
-      </button>
+        <!-- Create Student Form -->
+        <form th:action="@{/paycourtfine}" th:object="${finerefdto}" method="post" class="mb-4">
+            <!--        <div class="d-flex align-items-center">-->
+            <div class="container mt-5 govuk-!-text-colour">
 
-      <hr style="width:100%;text-align:left;margin-left:0">
-      <h2 class="govuk-heading" th:text="${header} ?: 'Help with this service'">Pay a license fee fine</h2>
-      <p class="govuk-body"
-         th:text="${message} ?: 'If you experience any problems when using this method to make payment, please contact the court that imposed your fine, using the contact details on your &quot;Notice of Fine&quot;.'">
-        Five.
-      </p>
+                <!-- Text container with stacked paragraphs -->
+                <div class="">
+                    <p class="govuk-body"
+                       th:text="${message} ?: 'To pay your Licence Fee Fine online you will need the Reference number from your &quot;Notice of Fine&quot; or &quot;Order&quot; as well as you postcode and house number.'">
+                        One.
+                    </p>
+                    <p class="govuk-body"
+                       th:text="${message} ?: 'Alternatively you can scan the QR code on your &quot;Fine Notice.&quot;'">
+                        Two.
+                    </p>
+                    <p class="govuk-body"
+                       th:text="${message} ?: 'The example &quot;Fine Notice&quot; pictured below shows where you will find this information. You will also need your debit or credit card details.'">
+                        Three.
+                    </p>
+                    <p class="govuk-body"
+                       th:text="${message} ?: 'No personal card details will be stored by HMCTS, your email address is required for PAYMENT receipt only and is passed to the payment processor.'">
+                        Four.
+                    </p>
+                    <p class="govuk-body"
+                       th:text="${message} ?: 'It is important to provide a valid email address if you require a receipt for this payment, without a valid email address a receipt cannot be issued.'">
+                        Five.
+                    </p>
+                </div>
+                <hr style="width:100%;text-align:left;margin-left:0">
+                <h2 class="govuk-heading" th:text="${header} ?: 'Where to find the Reference number and QR'">Pay a
+                    license fee fine</h2>
 
-    </form>
+                <img th:src="@{/locaterefqr.png}" alt="Reference Location" class="img-fluid"
+                     style="width: 100%; max-width: 650px;">
 
-  </main>
+                <hr style="width:100%;text-align:left;margin-left:0">
+
+            </div>
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    Fine Account details
+                </legend>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="referencenumber">Reference Number:</label>
+                    <input type="text" class="govuk-input govuk-input--width-10" th:if="${refError}" style="color: red;"
+                           th:field="*{referenceCode}" required>
+                    <input type="text" class="govuk-input govuk-input--width-10" th:unless="${refError}"
+                           th:field="*{referenceCode}" required>
+                    <p th:if="${refError}" class="govuk-error-message" th:text="${refError}"></p>
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="postcode">Postcode:</label>
+                    <input type="text" class="govuk-input govuk-input--width-10" th:if="${postError}"
+                           style="color: red;" th:field="*{postcode}" required>
+                    <input type="text" class="govuk-input govuk-input--width-10" th:unless="${postError}"
+                           th:field="*{postcode}" required>
+                    <p th:if="${postError}" class="govuk-error-message" th:text="${postError}"></p>
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="housenumber">House Number:</label>
+                    <input type="text" class="govuk-input govuk-input--width-10" th:if="${houseError}"
+                           style="color: red;" th:field="*{houseNo}" required>
+                    <input type="text" class="govuk-input govuk-input--width-10" th:unless="${houseError}"
+                           th:field="*{houseNo}" required>
+                    <p th:if="${houseError}" class="govuk-error-message" th:text="${houseError}"></p>
+                </div>
+
+                <p th:if="${error}" class="govuk-error-message" th:text="${error}"></p>
+            </fieldset>
+            <button type="continue" class="govuk-button">
+                Continue
+                <svg class="ms-2 mb-1.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
+                </svg>
+            </button>
+
+            <hr style="width:100%;text-align:left;margin-left:0">
+            <h2 class="govuk-heading" th:text="${header} ?: 'Help with this service'">Pay a license fee fine</h2>
+            <p class="govuk-body"
+               th:text="${message} ?: 'If you experience any problems when using this method to make payment, please contact the court that imposed your fine, using the contact details on your &quot;Notice of Fine&quot;.'">
+                Five.
+            </p>
+
+        </form>
+
+    </main>
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>
 
 <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
 <script type="module">
-  import {
-    initAll
-  } from '/javascripts/govuk-frontend.min.js'
-  initAll()
+    import {
+        initAll
+    } from '/javascripts/govuk-frontend.min.js'
+
+    initAll()
 </script>
 </body>
 
