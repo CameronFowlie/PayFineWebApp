@@ -42,7 +42,7 @@
 
         <hr style="width:100%;text-align:left;margin-left:0">
 
-        <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay the license fee fine'">Pay a license fee fine</h1>
+        <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay the licence fee fine'">Pay a licence fee fine</h1>
 
         <!-- Create Student Form -->
         <form th:action="@{/paycourtfine/payonlineenterdetails}" th:object="${finerefdto}" method="post" class="mb-4">
@@ -73,8 +73,8 @@
                     </p>
                 </div>
                 <hr style="width:100%;text-align:left;margin-left:0">
-                <h2 class="govuk-heading" th:text="${header} ?: 'Where to find the Reference number and QR'">Pay a
-                    license fee fine</h2>
+                <h2 class="govuk-heading" th:text="${header} ?: 'Where to find the Reference Number and QR code on your letter'">Pay a
+                    licence fee fine</h2>
 
                 <img th:src="@{/locaterefqr.png}" alt="Reference Location" class="img-fluid"
                      style="width: 100%; max-width: 650px;">
@@ -123,7 +123,7 @@
             </button>
 
             <hr style="width:100%;text-align:left;margin-left:0">
-            <h2 class="govuk-heading" th:text="${header} ?: 'Help with this service'">Pay a license fee fine</h2>
+            <h2 class="govuk-heading" th:text="${header} ?: 'Help with this service'">Pay a licence fee fine</h2>
             <p class="govuk-body"
                th:text="${message} ?: 'If you experience any problems when using this method to make payment, please contact the court that imposed your fine, using the contact details on your &quot;Notice of Fine&quot;.'">
                 Five.
