@@ -45,7 +45,7 @@
 
 
     <p class="govuk-body"><strong>Outstanding Payment: £</strong> <span th:text="${#numbers.formatDecimal(fine.amountDue, 1, 2)}">Amount left</span></p>
-    <p class="govuk-body"><strong>Payment Deadline: </strong> <span th:text="${fine.paymentDeadline}">Amount left</span></p>
+    <p class="govuk-body"><strong>Payment Deadline (YYYY/MM/DD): </strong> <span th:text="${fine.paymentDeadline}">Amount left</span></p>
 
 
     <hr style="width:100%;text-align:left;margin-left:0">

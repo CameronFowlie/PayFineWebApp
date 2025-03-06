@@ -41,10 +41,10 @@
       </div>
       <hr style="width:100%;text-align:left;margin-left:0">
 
-      <h1 class="govuk-heading-l"><strong>Fine Reference:</strong> <span th:text="${fine.referenceCode} ?: 'Amount you owe:'">Amount you owe</span></h1>
+      <h1 class="govuk-heading-l"><span>Fine Reference:</span> <span th:text="${fine.referenceCode} ?: 'Amount you owe:'">Amount you owe</span></h1>
 
     <p class="govuk-body"><strong>Outstanding Payment: £</strong> <span th:text="${#numbers.formatDecimal(fine.amountDue, 1, 2)}">Amount left</span></p>
-    <p class="govuk-body"><strong>Payment Deadline: </strong> <span th:text="${fine.paymentDeadline}">Amount left</span></p>
+    <p class="govuk-body"><strong>Payment Deadline (YYYY/MM/DD): </strong> <span th:text="${fine.paymentDeadline}">Amount left</span></p>
 
     <hr style="width:100%;text-align:left;margin-left:0">
 
