@@ -17,7 +17,7 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
-<body class="govuk-body">
+<body class="govuk-template__body">
 
 
 
@@ -28,6 +28,7 @@
 
 
 <div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content">
     <h1 class="govuk-heading-xl" th:text="${header} ?: 'Amount you owe:'">Amount you owe</h1>
 
 
@@ -69,38 +70,30 @@
                    placeholder="MM/YY"
                    inputmode="numeric">
             <p th:if="${expiryError}" class="govuk-error-message" th:text="${expiryError}"></p>
-
-            <button type="continue" class="btn btn-success btn-lg d-inline-flex mt-4">
-                Continue
-                <svg class="ms-2 mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
-                </svg>
-            </button>
-
         </div>
+        <button type="continue" class="btn btn-success btn-lg d-inline-flex mt-4">
+            Continue
+            <svg class="ms-2 mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
+            </svg>
+        </button>
 
     </form>
+    </main>
 </div>
-</body>
 <!--Include footer-->
+
 <div th:replace="fragments/footer :: footer"></div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                crossorigin="anonymous"></script>
-
-        <script>
-            document.getElementById("expirydate").addEventListener("input", function (event) {
-                let input = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-                if (input.length > 2) {
-                    input = input.slice(0, 2) + '/' + input.slice(2, 4);
-                }
-                event.target.value = input;
-            });
-        </script>
-
-
+<script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+<script type="module">
+    import {
+      initAll
+    } from '/javascripts/govuk-frontend.min.js'
+    initAll()
+</script>
+</body>
 
 </html>
