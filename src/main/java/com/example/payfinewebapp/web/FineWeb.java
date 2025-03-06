@@ -26,7 +26,7 @@ public class FineWeb {
     private FineService fineService;
 
     Boolean test = false;
-
+    Boolean showCookies = true;
     @GetMapping
     public String HomePage(Model model) {
         if (!test) {
@@ -42,7 +42,20 @@ public class FineWeb {
             test = true;
         }
         model.addAttribute("title", "Pay the license fee fine");
+        if(!showCookies)
+        {
+            model.addAttribute("hideCookies", "true");
+        }
         return "indexGov";
+    }
+
+    @GetMapping("noCookies")
+    public String HomePageNoCookies(Model model) {
+        model.addAttribute("title", "Pay the license fee fine");
+        showCookies = false;
+        System.out.println("No Cookies");
+        model.addAttribute("hideCookies", "true");
+        return "redirect:/paycourtfine";
     }
 
     @GetMapping("w")
