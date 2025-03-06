@@ -35,7 +35,11 @@
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
 
-    <a th:href="@{/paycourtfine/w}" class=" govuk-link govuk-\!-text-align-right">Cymraeg</a>
+
+    <div style="display: flex; justify-content: flex-end;">
+      <a th:href="@{/paycourtfine/w}" class="govuk-link">Cymraeg</a>
+    </div>
+
     <hr style="width:100%;text-align:left;margin-left:0">
 
     <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay the license fee fine'">Pay a license fee fine</h1>
@@ -71,7 +75,7 @@
         <hr style="width:100%;text-align:left;margin-left:0">
         <h2 class="govuk-heading" th:text="${header} ?: 'Where to find the Reference number and QR'">Pay a license fee fine</h2>
         <!-- Image remains aligned to the right -->
-        <img th:src="@{/locateref.png}" alt="Reference Location" class="img-fluid" style="max-width: 650px;">
+        <img th:src="@{/locaterefqr.png}" alt="Reference Location" class="img-fluid" style="max-width: 650px;">
         <hr style="width:100%;text-align:left;margin-left:0">
 
       </div>
@@ -102,7 +106,7 @@
       </fieldset>
       <button type="continue" class="govuk-button">
         Continue
-        <svg class="ms-2 mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        <svg class="ms-2 mb-1.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
              viewBox="0 0 16 16">
           <path fill-rule="evenodd"
                 d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>

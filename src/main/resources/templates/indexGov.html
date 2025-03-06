@@ -69,7 +69,9 @@
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content">
 
-        <a th:href="@{/paycourtfine/w}" class=" govuk-link govuk-\!-text-align-right">Cymraeg</a>
+        <div style="display: flex; justify-content: flex-end;">
+            <a th:href="@{/paycourtfine/w}" class="govuk-link">Cymraeg</a>
+        </div>
         <hr style="width:100%;text-align:left;margin-left:0">
 
     <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay your TV license fine'">Pay a court fine</h1>
@@ -91,9 +93,9 @@
        th:text="${message} ?: 'The court might reject your payment if enforcement action has already started.'">
         The court might reject your payment if enforcement action has already started.</p>
 
-    <p class="govuk-body"
-       th:text="${message} ?: 'If you were fined at a Crown Court, you need your account number and division code.'">
-        If you were fined at a Crown Court, you need your account number and division code.</p>
+<!--    <p class="govuk-body"-->
+<!--       th:text="${message} ?: 'If you were fined at a Crown Court, you need your account number and division code.'">-->
+<!--        If you were fined at a Crown Court, you need your account number and division code.</p>-->
 
     <h3 class="govuk-heading-m">Pay online</h3>
     <p class="govuk-body">You can pay online using the court fines service.</p>
@@ -117,6 +119,10 @@
         Scotland phone number.</p>
     <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9984 (in NI)'">
         NI phone number.</p>
+
+        <h3 class="govuk-heading-m">Pay at your local court office</h3>
+        <p class="govuk-body">If you reside in Northern Ireland, you can pay in person at your local court office.</p>
+        <img th:src="@{/courtoffice.png}" alt="Reference Location" class="img-fluid" style="max-width: 650px;">
 
     </main>
 </div>

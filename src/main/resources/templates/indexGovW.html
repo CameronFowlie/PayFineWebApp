@@ -38,54 +38,62 @@
     <main class="govuk-main-wrapper" id="main-content">
 
         <nav>
-            <a th:href="@{/paycourtfine}" class=" govuk-link govuk-\!-items-align-right">English</a>
+
+            <div style="display: flex; justify-content: flex-end;">
+                <a th:href="@{/paycourtfine}" class="govuk-link">English</a>
+            </div>
             <hr style="width:100%;text-align:left;margin-left:0">
         </nav>
-    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Talu dirwy ffir drwydded'">Pay a court fine</h1>
+        <h1 class="govuk-heading-xl" th:text="${header} ?: 'Talu dirwy ffir drwydded'">Pay a court fine</h1>
 
-    <p class="govuk-body" th:text="${message} ?: 'Bydd arnoch angen eich ‘hysbysiad o ddirwy’ a cherdyn debyd neu gerdyn credyd i dalu.'">
-        You can pay a court fine or charge online or by phone.</p>
+        <p class="govuk-body"
+           th:text="${message} ?: 'Bydd arnoch angen eich ‘hysbysiad o ddirwy’ a cherdyn debyd neu gerdyn credyd i dalu.'">
+            You can pay a court fine or charge online or by phone.</p>
 
-    <h2 class="govuk-heading-m" th:text="${message} ?: 'Cyn i chi ddechrau'">How to pay</h2>
-    <p class="govuk-body"
-       th:text="${message} ?: 'Rhaid i chi dalu erbyn y dyddiad sydd ar eich hysbysiad o ddirwy.'">
-        You need your ‘notice of fine’ and a debit or credit card. You must pay by the date given in your notice of
-        fine.</p>
+        <h2 class="govuk-heading-m" th:text="${message} ?: 'Cyn i chi ddechrau'">How to pay</h2>
+        <p class="govuk-body"
+           th:text="${message} ?: 'Rhaid i chi dalu erbyn y dyddiad sydd ar eich hysbysiad o ddirwy.'">
+            You need your ‘notice of fine’ and a debit or credit card. You must pay by the date given in your notice of
+            fine.</p>
 
-    <p class="govuk-body"
-       th:text="${message} ?: 'Os bydd camau gorfodi wedi cychwyn efallai bydd y llys yn gwrthod eich taliad.'">
-        If you’ve lost your notice of fine, contact the court where you received the fine.</p>
+        <p class="govuk-body"
+           th:text="${message} ?: 'Os bydd camau gorfodi wedi cychwyn efallai bydd y llys yn gwrthod eich taliad.'">
+            If you’ve lost your notice of fine, contact the court where you received the fine.</p>
 
-    <p class="govuk-body"
-       th:text="${message} ?: 'Os cawsoch ddirwy yn Llys y Goron, bydd arnoch angen rhif eich cyfrif a chod adran.'">
-        The court might reject your payment if enforcement action has already started.</p>
+        <p class="govuk-body"
+           th:text="${message} ?: 'Os cawsoch ddirwy yn Llys y Goron, bydd arnoch angen rhif eich cyfrif a chod adran.'">
+            The court might reject your payment if enforcement action has already started.</p>
 
-    <p class="govuk-body"
-       th:text="${message} ?: 'Os na allwch ddod o hyd i’ch hysbysiad o ddirwy, cysylltwch â’r llys ble cawsoch y ddirwy.'">
-        If you were fined at a Crown Court, you need your account number and division code.</p>
+        <p class="govuk-body"
+           th:text="${message} ?: 'Os na allwch ddod o hyd i’ch hysbysiad o ddirwy, cysylltwch â’r llys ble cawsoch y ddirwy.'">
+            If you were fined at a Crown Court, you need your account number and division code.</p>
 
-    <h3 class="govuk-heading-m">Talu ar-lein</h3>
-    <p class="govuk-body">Gallwch dalu ar-lein gan ddefnyddio'r gwasanaeth dirwyon llys.</p>
+        <h3 class="govuk-heading-m">Talu ar-lein</h3>
+        <p class="govuk-body">Gallwch dalu ar-lein gan ddefnyddio'r gwasanaeth dirwyon llys.</p>
 
-    <!--  Button-->
-    <a th:href="@{/paycourtfine/payonlineenterdetails}" class="govuk-button">
-        Dechrau nawr
-        <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-             viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                  d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
-        </svg>
-    </a>
+        <!--  Button-->
+        <a th:href="@{/paycourtfine/payonlineenterdetails}" class="govuk-button">
+            Dechrau nawr
+            <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M1 8a.75.75 0 0 1 .75-.75h10.69L8.22 3.28a.75.75 0 0 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 0 1-1.06-1.06l4.22-4.22H1.75A.75.75 0 0 1 1 8z"/>
+            </svg>
+        </a>
 
-    <h3 class="govuk-heading-m" th:text="${message} ?: 'Ffyrdd eraill o dalu'">Pay by phone</h3>
-    <p class="govuk-body" th:text="${message} ?: 'Rhif ffôn: 0300 790 9901 (yn Lloegr)'">
-        England phone number.</p>
-    <p class="govuk-body" th:text="${message} ?: 'Rhif ffôn: 0300 790 9980 (yng Nghymru)'">
-        Wales phone number.</p>
-    <p class="govuk-body" th:text="${message} ?: 'Rhif ffôn: 0300 790 9982 (yn yr Alban)'">
-        Scotland phone number.</p>
-    <p class="govuk-body" th:text="${message} ?: 'Rhif ffôn: 0300 790 9984 (yng Ngogledd Iwerddon)'">
-        NI phone number.</p>
+        <h3 class="govuk-heading-m" th:text="${message} ?: 'Ffyrdd eraill o dalu'">Pay by phone</h3>
+        <p class="govuk-body" th:text="${message} ?: 'Rhif ffôn: 0300 790 9901 (yn Lloegr)'">
+            England phone number.</p>
+        <p class="govuk-body" th:text="${message} ?: 'Rhif ffôn: 0300 790 9980 (yng Nghymru)'">
+            Wales phone number.</p>
+        <p class="govuk-body" th:text="${message} ?: 'Rhif ffôn: 0300 790 9982 (yn yr Alban)'">
+            Scotland phone number.</p>
+        <p class="govuk-body" th:text="${message} ?: 'Rhif ffôn: 0300 790 9984 (yng Ngogledd Iwerddon)'">
+            NI phone number.</p>
+
+        <h3 class="govuk-heading-m">Talu yn eich swyddfa llys leol</h3>
+        <p class="govuk-body">Os ydych yn byw yng Ngogledd Iwerddon, gallwch dalu yn bersonol yn eich swyddfa llys leol.</p>
+        <img th:src="@{/courtoffice.png}" alt="Reference Location" class="img-fluid" style="max-width: 650px;">
 
     </main>
 </div>
@@ -95,8 +103,9 @@
 <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
 <script type="module">
     import {
-      initAll
+        initAll
     } from '/javascripts/govuk-frontend.min.js'
+
     initAll()
 </script>
 </body>

@@ -36,7 +36,9 @@
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
 
-      <a th:href="@{/paycourtfine/w}" class=" govuk-link govuk-\!-text-align-right">Cymraeg</a>
+      <div style="display: flex; justify-content: flex-end;">
+          <a th:href="@{/paycourtfine/w}" class="govuk-link">Cymraeg</a>
+      </div>
       <hr style="width:100%;text-align:left;margin-left:0">
 
       <h1 class="govuk-heading-xl"><strong>Fine Reference:</strong> <span th:text="${fine.referenceCode} ?: 'Amount you owe:'">Amount you owe</span></h1>
