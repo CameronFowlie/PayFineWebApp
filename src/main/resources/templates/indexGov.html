@@ -23,9 +23,41 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+
 </head>
 
+
+
+
+
 <body class="govuk-template__body">
+
+<!--Cookie banner-->
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on [name of service]">
+    <div class="govuk-cookie-banner__message govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+                    Cookies on Pay your TV license fine
+                </h2>
+                <div class="govuk-cookie-banner__content">
+                    <p class="govuk-body">We use some essential cookies to make this service work.</p>
+                    <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+                </div>
+            </div>
+        </div>
+        <div class="govuk-button-group">
+            <button type="button" class="govuk-button" data-module="govuk-button">
+                Accept analytics cookies
+            </button>
+            <button type="button" class="govuk-button" data-module="govuk-button">
+                Reject analytics cookies
+            </button>
+            <a class="govuk-link" href="#">View cookies</a>
+        </div>
+    </div>
+</div>
 <script>
     document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
 </script>
@@ -40,10 +72,10 @@
         <a th:href="@{/paycourtfine/w}" class=" govuk-link govuk-\!-text-align-right">Cymraeg</a>
         <hr style="width:100%;text-align:left;margin-left:0">
 
-    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay the license fee fine'">Pay a court fine</h1>
+    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay your TV license fine'">Pay a court fine</h1>
 
-    <p class="govuk-body" th:text="${message} ?: 'You can pay the license fee fine or charge online or by phone.'">
-        You can pay a court fine or charge online or by phone.</p>
+    <p class="govuk-body" th:text="${message} ?: 'You can pay the license fee fine or charge online, by phone, or at your local court office.'">
+        You can pay a court fine online or by phone.</p>
 
     <h2 class="govuk-heading-m" th:text="${message} ?: 'How to pay'">How to pay</h2>
     <p class="govuk-body"

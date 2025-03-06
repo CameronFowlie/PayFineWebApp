@@ -41,7 +41,7 @@
 
       <h1 class="govuk-heading-xl"><strong>Fine Reference:</strong> <span th:text="${fine.referenceCode} ?: 'Amount you owe:'">Amount you owe</span></h1>
 
-    <p class="govuk-body"><strong>Outstanding Payment: £</strong> <span th:text="${fine.amountDue}">Amount left</span></p>
+    <p class="govuk-body"><strong>Outstanding Payment: £</strong> <span th:text="${#numbers.formatDecimal(fine.amountDue, 1, 2)}">Amount left</span></p>
     <p class="govuk-body"><strong>Payment Deadline: </strong> <span th:text="${fine.paymentDeadline}">Amount left</span></p>
 
     <hr style="width:100%;text-align:left;margin-left:0">
@@ -97,6 +97,15 @@
     initAll
   } from '/javascripts/govuk-frontend.min.js'
   initAll()
+</script>
+<script>
+    document.getElementById("expirydate").addEventListener("input", function (event) {
+        let input = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+        if (input.length > 2) {
+            input = input.slice(0, 2) + '/' + input.slice(2, 4);
+        }
+        event.target.value = input;
+    });
 </script>
 </body>
 

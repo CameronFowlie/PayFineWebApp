@@ -94,6 +94,16 @@
     } from '/javascripts/govuk-frontend.min.js'
     initAll()
 </script>
+
+<script>
+    document.getElementById("expirydate").addEventListener("input", function (event) {
+        let input = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+        if (input.length > 2) {
+            input = input.slice(0, 2) + '/' + input.slice(2, 4);
+        }
+        event.target.value = input;
+    });
+</script>
 </body>
 
 </html>
