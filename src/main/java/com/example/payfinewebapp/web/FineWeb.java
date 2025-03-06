@@ -30,15 +30,13 @@ public class FineWeb {
     @GetMapping
     public String HomePage(Model model) {
         if (!test) {
-            Fine f1 = new Fine("feiwfgw1", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
-            Fine f2 = new Fine("1234567890", 120.0, LocalDate.of(2020, 1, 8), "BT1 3LL", "45");
-            Fine f3 = new Fine("feiwfgw3", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
-            Fine f4 = new Fine("4", 100.0, LocalDate.of(2020, 1, 8), "4", "4");
+            Fine f1 = new Fine("78g6456hg7", 500.0, LocalDate.of(2025, 8, 16), "BT65 7HU", "23A");
+            Fine f2 = new Fine("1234567890", 120.0, LocalDate.of(2025, 5, 8), "BT1 3LL", "45");
+            Fine f3 = new Fine("546yh54hh5", 1000.0, LocalDate.of(2026, 3, 24), "BT51 9TL", "5");
 
             fineService.CreateFine(f1);
             fineService.CreateFine(f2);
             fineService.CreateFine(f3);
-            fineService.CreateFine(f4);
             test = true;
         }
         model.addAttribute("title", "Pay the license fee fine");
