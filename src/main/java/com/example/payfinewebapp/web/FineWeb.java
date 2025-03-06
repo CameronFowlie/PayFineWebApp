@@ -68,7 +68,7 @@ public class FineWeb {
         model.addAttribute("finerefdto", new FineRefDTO());
         return "enterDetailsGov";
     }
-    @PostMapping
+    @PostMapping("payonlineenterdetails")
     public String FindFine(@Valid @ModelAttribute FineRefDTO finerefdto, BindingResult result, Model model)
     {
         Boolean hasError = false;

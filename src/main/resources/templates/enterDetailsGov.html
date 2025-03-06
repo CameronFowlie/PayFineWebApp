@@ -45,7 +45,7 @@
         <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay the license fee fine'">Pay a license fee fine</h1>
 
         <!-- Create Student Form -->
-        <form th:action="@{/paycourtfine}" th:object="${finerefdto}" method="post" class="mb-4">
+        <form th:action="@{/paycourtfine/payonlineenterdetails}" th:object="${finerefdto}" method="post" class="mb-4">
             <!--        <div class="d-flex align-items-center">-->
             <div class="container mt-5 govuk-!-text-colour">
 
