@@ -22,7 +22,6 @@ import java.util.Optional;
 @RequestMapping("paycourtfine")
 public class FineWeb {
 
-
     @Autowired
     private FineService fineService;
 
@@ -32,7 +31,7 @@ public class FineWeb {
     public String HomePage(Model model) {
         if (!test) {
             Fine f1 = new Fine("feiwfgw1", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
-            Fine f2 = new Fine("feiwfgw2", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
+            Fine f2 = new Fine("1234567890", 120.0, LocalDate.of(2020, 1, 8), "BT1 3LL", "45");
             Fine f3 = new Fine("feiwfgw3", 1000.0, LocalDate.of(2020, 1, 8), "BT65 7HU", "23A");
             Fine f4 = new Fine("4", 100.0, LocalDate.of(2020, 1, 8), "4", "4");
 
@@ -42,15 +41,21 @@ public class FineWeb {
             fineService.CreateFine(f4);
             test = true;
         }
-        model.addAttribute("title", "Pay a court fine");
+        model.addAttribute("title", "Pay the license fee fine");
         return "indexGov";
+    }
+
+    @GetMapping("w")
+    public String HomePageW(Model model) {
+        model.addAttribute("title", "Pay the license fee fine");
+        return "indexGovW";
     }
 
     @GetMapping("payonlineenterdetails")
     public String FindFine(Model model) {
         model.addAttribute("title", "Enter details");
         model.addAttribute("finerefdto", new FineRefDTO());
-        return "enterDetails";
+        return "enterDetailsGov";
     }
     @PostMapping
     public String FindFine(@Valid @ModelAttribute FineRefDTO finerefdto, BindingResult result, Model model)
@@ -83,7 +88,7 @@ public class FineWeb {
             model.addAttribute("title", "Enter details");
             model.addAttribute("error", "No Fine found, Please Check entered details");
             model.addAttribute("finerefdto", finerefdto);
-            return "enterDetails";
+            return "enterDetailsGov";
         }
 
         Optional<Fine> fine = fineService.GetFineByReferencePlus(finerefdto.getReferenceCode(),finerefdto.getPostcode(),finerefdto.getHouseNo());
@@ -93,7 +98,7 @@ public class FineWeb {
             model.addAttribute("error", "No Fine found, Please Check entered details");
             model.addAttribute("finerefdto", finerefdto);
 
-            return "enterDetails";
+            return "enterDetailsGov";
         }
         return "redirect:/paycourtfine/paymentscreen/" + finerefdto.getReferenceCode();
     }
@@ -104,7 +109,7 @@ public class FineWeb {
         model.addAttribute("title", "Payment details");
         model.addAttribute("fine", fine.get());
         model.addAttribute("paymentdto", new PaymentDTO());
-        return "paymentScreen";
+        return "paymentScreenGov";
     }
     @PostMapping("paymentscreen/{ref}")
     public String FindFine(@Valid @ModelAttribute PaymentDTO paymentdto, BindingResult result,@PathVariable String ref, Model model)
@@ -157,7 +162,7 @@ public class FineWeb {
             Optional<Fine> fine = fineService.GetFineByReference(ref);
             model.addAttribute("fine", fine.get());
             model.addAttribute("paymentdto", paymentdto);
-            return "paymentscreen";
+            return "paymentscreenGov";
         }
 
         String test = "Card Num " + paymentdto.getCardNumber() + " Amount: " + paymentdto.getAmountToPay() + " CVC: " + paymentdto.getCvcNumber();
@@ -165,7 +170,7 @@ public class FineWeb {
         Fine fine = fineService.PayFine(ref, paymentdto);
         if(fine == null)
         {
-            return "fineSettled";
+            return "fineSettledGov";
         }
         else
         {
@@ -178,18 +183,6 @@ public class FineWeb {
         Optional<Fine> fine = fineService.GetFineByReference(ref);
         model.addAttribute("title", "Payment confirmed");
         model.addAttribute("fine", fine.get());
-        return "paymentConfirmationScreen";
+        return "paymentConfirmationScreenGov";
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    //update fine based on amount input
-    //if fine - input < 0 then say fine payed
-    //else show remaining balance
-    //ask vivek about error handling
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 }

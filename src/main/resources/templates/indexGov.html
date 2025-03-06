@@ -3,14 +3,11 @@
 
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:inline="text">
-    <title th:text="${title}">Pay a court fine</title>
+    <title th:text="${title}">Pay a license fee fine</title>
     <meta charset="UTF-8">
-
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:text="${title}">Court Fine</title>
+    <title th:text="${title}">License Fee Fine</title>
 
     <!-- GOV.UK Design System CSS -->
     <meta name="theme-color" content="#0b0c0c">
@@ -36,11 +33,16 @@
 
 <div th:replace="fragments/header :: header"></div>
 
+
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content">
-    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay a court fine'">Pay a court fine</h1>
 
-    <p class="govuk-body" th:text="${message} ?: 'You can pay a court fine or charge online or by phone.'">
+        <a th:href="@{/paycourtfine/w}" class=" govuk-link govuk-\!-text-align-right">Cymraeg</a>
+        <hr style="width:100%;text-align:left;margin-left:0">
+
+    <h1 class="govuk-heading-xl" th:text="${header} ?: 'Pay the license fee fine'">Pay a court fine</h1>
+
+    <p class="govuk-body" th:text="${message} ?: 'You can pay the license fee fine or charge online or by phone.'">
         You can pay a court fine or charge online or by phone.</p>
 
     <h2 class="govuk-heading-m" th:text="${message} ?: 'How to pay'">How to pay</h2>
@@ -61,7 +63,7 @@
        th:text="${message} ?: 'If you were fined at a Crown Court, you need your account number and division code.'">
         If you were fined at a Crown Court, you need your account number and division code.</p>
 
-    <h2 class="govuk-heading-m">Pay online</h2>
+    <h3 class="govuk-heading-m">Pay online</h3>
     <p class="govuk-body">You can pay online using the court fines service.</p>
 
     <!--  Button-->
@@ -74,14 +76,7 @@
         </svg>
     </a>
 
-    <!--    <a th:href="${payOnlineUrl} ?: '#'" role="button" draggable="false" class="govuk-button govuk-button&#45;&#45;start" data-module="govuk-button">-->
-    <!--        Start now-->
-    <!--        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">-->
-    <!--            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />-->
-    <!--        </svg>-->
-    <!--    </a>-->
-
-    <h2 class="govuk-heading-m" th:text="${message} ?: 'Pay by phone'">Pay by phone</h2>
+    <h3 class="govuk-heading-m" th:text="${message} ?: 'Pay by phone'">Pay by phone</h3>
     <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9901 (in England)'">
         England phone number.</p>
     <p class="govuk-body" th:text="${message} ?: 'Telephone: 0300 790 9980 (in Wales)'">

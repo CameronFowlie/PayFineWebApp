@@ -7597,6 +7597,9 @@ em
 .govuk-\!-text-align-right {
     text-align: right !important
 }
+.govuk-\!-items-align-right {
+    align-items: right !important
+}
 
 .govuk-\!-font-size-80 {
     font-size: 3.3125rem !important;
